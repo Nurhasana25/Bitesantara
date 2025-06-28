@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <!-- Basic -->
+      <meta charset="utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <!-- Mobile Metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+      <!-- Site Metas -->
+      <meta name="keywords" content="" />
+      <meta name="description" content="" />
+      <meta name="author" content="" />
+      <link rel="shortcut icon" href="images/faviconbaru.jpg" type="">
+      <title>Bitesantara - SnackBarBite</title>
+      <!-- bootstrap core css -->
+      <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+      <!-- font awesome style -->
+      <link href="css/font-awesome.min.css" rel="stylesheet" />
+      <!-- Custom styles for this template -->
+      <link href="css/style.css" rel="stylesheet" />
+      <!-- responsive style -->
+      <link href="css/responsive.css" rel="stylesheet" />
+   </head>
+   <body class="sub_page">
+      <div class="hero_area">
+         <!-- header section start -->
+         <header class="header_section">
+            <div class="container">
+               <nav class="navbar navbar-expand-lg custom_nav-container ">
+                  <a class="navbar-brand" href="index.html"><img width="250" src="images/logobaru.png" alt="#" /></a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class=""> </span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                     <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                           <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="product.html">Products</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="blog_list.html">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                        <li class="nav-item active">
+                           <a class="nav-link" href="cart.html">Cart</a>
+                        </li>
+                     </ul>
+                  </div>
+               </nav>
+            </div>
+         </header>
+         <!-- end header section -->
+      </div>
+      <!-- cart section -->
+      <section class="cart_section layout_padding">
+         <div class="container">
+            <div class="heading_container heading_center">
+               <h2>Keranjang Belanja</h2>
+            </div>
+            <div class="table-responsive">
+               <table class="table table-bordered" id="cartTable">
+                  <thead class="thead-light">
+                     <tr>
+                        <th>Nama Produk</th>
+                        <th>Harga Satuan</th>
+                        <th>Jumlah</th>
+                        <th>Subtotal</th>
+                        <th>Aksi</th>
+                     </tr>
+                  </thead>
+                  <tbody id="cartBody">
+                     <!-- Cart items will be injected here -->
+                  </tbody>
+               </table>
+            </div>
+            <div class="row justify-content-center align-items-center" style="margin-top:24px;">
+               <div class="col-md-6 d-flex justify-content-center mb-2 mb-md-0">
+                  <button class="btn btn-secondary w-100" style="max-width:220px;" onclick="window.location='product.html'">+ Tambah Produk</button>
+               </div>
+               <div class="col-md-6 d-flex justify-content-center">
+                  <div class="text-center w-100" style="max-width:220px;">
+                     <div class="card" style="margin-bottom:12px;">
+                        <div class="card-body p-2">
+                           <h4 class="mb-0" style="font-size:1.2rem;">Total: <span id="cartTotal">Rp 0</span></h4>
+                        </div>
+                     </div>
+                     <button class="btn btn-success mt-2 w-100" onclick="checkoutCart()">Proses Checkout</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- Modal Pembayaran -->
+         <div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+               <div class="modal-content">
+                  <div class="modal-header">
+                     <h5 class="modal-title" id="paymentModalLabel">Pilih Metode Pembayaran</h5>
+                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                     </button>
+                  </div>
+                  <div class="modal-body">
+                     <div class="mb-3"><strong>E-Wallet</strong></div>
+                     <div class="btn-group btn-group-toggle mb-3 w-100" data-toggle="buttons">
+                        <label class="btn btn-outline-primary w-25">
+                        <input type="radio" name="payment" value="OVO" autocomplete="off"> OVO
+                        </label>
+                        <label class="btn btn-outline-primary w-25">
+                        <input type="radio" name="payment" value="GoPay" autocomplete="off"> GoPay
+                        </label>
+                        <label class="btn btn-outline-primary w-25">
+                        <input type="radio" name="payment" value="DANA" autocomplete="off"> DANA
+                        </label>
+                        <label class="btn btn-outline-primary w-25">
+                        <input type="radio" name="payment" value="ShopeePay" autocomplete="off"> ShopeePay
+                        </label>
+                     </div>
+                     <div class="mb-3"><strong>E-Banking</strong></div>
+                     <div class="btn-group btn-group-toggle w-100" data-toggle="buttons">
+                        <label class="btn btn-outline-success w-25">
+                        <input type="radio" name="payment" value="BRI" autocomplete="off"> BRI
+                        </label>
+                        <label class="btn btn-outline-success w-25">
+                        <input type="radio" name="payment" value="BCA" autocomplete="off"> BCA
+                        </label>
+                        <label class="btn btn-outline-success w-25">
+                        <input type="radio" name="payment" value="Mandiri" autocomplete="off"> Mandiri
+                        </label>
+                        <label class="btn btn-outline-success w-25">
+                        <input type="radio" name="payment" value="BNI" autocomplete="off"> BNI
+                        </label>
+                     </div>
+                  </div>
+                  <div class="modal-footer">
+                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                     <button type="button" class="btn btn-primary" id="bayarBtn">Bayar</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <!-- end cart section -->
+      <!-- jQery -->
+      <script src="js/jquery-3.4.1.min.js"></script>
+      <!-- popper js -->
+      <script src="js/popper.min.js"></script>
+      <!-- bootstrap js -->
+      <script src="js/bootstrap.js"></script>
+      <!-- custom js -->
+      <script src="js/custom.js"></script>
+      <script>
+      // Load cart from localStorage and render
+      function loadCart() {
+         let cart = JSON.parse(localStorage.getItem('cart')) || [];
+         let cartBody = document.getElementById('cartBody');
+         let cartTotal = 0;
+         cartBody.innerHTML = '';
+         if(cart.length === 0) {
+            cartBody.innerHTML = '<tr><td colspan="5" class="text-center">Keranjang kosong</td></tr>';
+         } else {
+            cart.forEach((item, idx) => {
+               let subtotal = item.qty * item.price;
+               cartTotal += subtotal;
+               cartBody.innerHTML += `
+                  <tr>
+                     <td><img src="${item.image}" alt="${item.name}" style="width:40px; height:40px; object-fit:cover; margin-right:8px;"> ${item.name}</td>
+                     <td>Rp ${item.price.toLocaleString('id-ID')}</td>
+                     <td><input type="number" min="1" value="${item.qty}" style="width:60px;" onchange="updateQuantity(${idx}, this.value)"></td>
+                     <td>Rp ${(subtotal).toLocaleString('id-ID')}</td>
+                     <td><button class="btn btn-danger btn-sm" onclick="removeItem(${idx})">Hapus</button></td>
+                  </tr>
+               `;
+            });
+         }
+         document.getElementById('cartTotal').innerText = 'Rp ' + cartTotal.toLocaleString('id-ID');
+      }
+      function updateQuantity(idx, qty) {
+         let cart = JSON.parse(localStorage.getItem('cart')) || [];
+         qty = parseInt(qty);
+         if(qty < 1) qty = 1;
+         cart[idx].qty = qty;
+         localStorage.setItem('cart', JSON.stringify(cart));
+         loadCart();
+      }
+      function removeItem(idx) {
+         let cart = JSON.parse(localStorage.getItem('cart')) || [];
+         cart.splice(idx, 1);
+         localStorage.setItem('cart', JSON.stringify(cart));
+         loadCart();
+      }
+      function checkoutCart() {
+         let cart = JSON.parse(localStorage.getItem('cart')) || [];
+         if(cart.length === 0) {
+            // Tampilkan popup keranjang kosong
+            if (window.bootstrap && window.bootstrap.Modal) {
+               alert('Keranjang masih kosong!');
+            } else {
+               alert('Keranjang masih kosong!');
+            }
+            return;
+         }
+         // Tampilkan modal pembayaran
+         $('#paymentModal').modal('show');
+      }
+
+      document.addEventListener('DOMContentLoaded', function() {
+         // Tombol Bayar pada modal
+         document.getElementById('bayarBtn').onclick = function() {
+            let selected = document.querySelector('input[name="payment"]:checked');
+            if (!selected) {
+               alert('Silakan pilih metode pembayaran!');
+               return;
+            }
+            // Simulasi pembayaran sukses, redirect ke WhatsApp
+            let waMsg = encodeURIComponent('Halo, saya sudah melakukan pembayaran melalui ' + selected.value + '. Mohon proses pesanan saya.');
+            window.location = 'https://wa.me/6281234567890?text=' + waMsg;
+            // Bersihkan keranjang
+            localStorage.removeItem('cart');
+            $('#paymentModal').modal('hide');
+            loadCart();
+         };
+      });
+
+      window.onload = loadCart;
+      </script>
+      <div class="cpy_">
+         <p class="mx-auto">© 2025 Bitesantara. All Rights Reserved.</p>
+      </div>
+   </body>
+</html>
